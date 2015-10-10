@@ -1,0 +1,20 @@
+h1 {
+    color:white;
+    font-size:24px;
+    background:green;
+    font-family: Arial, sans-serif;
+}
+body {
+    ##background-image:url("MIKE-ZAMANSKY.jpg");
+    ##background-repeat:no-repeat;
+    ##no clue what the proper syntax is for calling this picture;
+    background-color: rgb(220,255,220);
+}
+p {
+    color:black;
+    font-size:12px;
+    background:white
+}
+div {
+    color:black;
+}

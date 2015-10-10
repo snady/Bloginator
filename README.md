@@ -1,9 +1,9 @@
 # Bloginator
 
-Leader- Henry Filosa
-UX- Randy Higgins
-Backend- Chloe Kaubisch
-Middleware- Alex Sosnovsky
+Leader- Henry Filosa \n
+UX- Randy Higgins \n
+Backend- Chloe Kaubisch \n
+Middleware- Alex Sosnovsky \n
 
 Deadlines:
   1.Complete user login and registration system (10/13)

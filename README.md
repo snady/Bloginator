@@ -2,11 +2,8 @@
 
 
 Leader- Henry Filosa
-
 UX- Randy Higgins 
-
 Backend- Chloe Kaubisch 
-
 Middleware- Alex Sosnovsky 
 
 ***

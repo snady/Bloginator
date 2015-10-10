@@ -5,9 +5,10 @@ h1 {
     font-family: Arial, sans-serif;
 }
 body {
-    background-image:"static/MIKE-ZAMANSKY.jpg";
-    background-repeat:no-repeat;
-
+    ##background-image:url("MIKE-ZAMANSKY.jpg");
+    ##background-repeat:no-repeat;
+    ##no clue what the proper syntax is for calling this picture;
+    background-color: rgb(220,255,220);
 }
 p {
     color:black;

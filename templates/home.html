@@ -1,7 +1,18 @@
 <!DOCTYPE html>
- <head>
-<link rel="stylesheet" type="text/css" href="template00.css">
+
+<head>
+  <title>Bloginator</title>
 </head>
-<h1>Who Is the greatest?</h1>
-<p>Zamansky is</p>
-<div>awww yeah</div>
+
+<body>
+  <p>This will be the main page of the blog</p>
+  <p> {% if s.logged %} You are logged in!  </p>
+  <form action="/logout">
+    <input type="submit" value="Logout">
+  </form>
+
+  <p> {% else %} You are not logged in! :( </p> 
+  <a href="/login">Login </a>
+{% endif %}
+</body>
+ 

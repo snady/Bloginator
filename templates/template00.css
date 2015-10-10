@@ -2,12 +2,15 @@ h1 {
     color:white;
     font-size:24px;
     background:green;
-    font-family: Arial, sans-serif;
+     font-family: Impact, sans-serif;
+    font-style: italic;
 }
 body {
      background-image:url("http://cdn.alleywatch.com/wp-content/uploads/2014/08/MIKE-ZAMANKSY.jpg");
 }
 p {
+    border-style: solid;
+    border-width: 2px;
     color:black;
     font-size:12px;
     background:white

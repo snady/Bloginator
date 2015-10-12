@@ -25,20 +25,7 @@ def check():
     for r in res:
         print r
 
-def temp():
-
-    conn = sqlite3.connect(db_name)
-    c = conn.cursor()
-
-    x = """insert into members values ("How", "Why", 222);"""
-    
-    print x
-    c.execute(x)
-
-    conn.commit()
-    check()
-
-def filterUname(uname):
+def filterUname(uname, pwd):
     
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
@@ -49,7 +36,7 @@ def filterUname(uname):
         if i == uname:
             return false
         else: 
-            return true
+            addMember(uname, pwd)
 
 def addMember(u, p):
 
@@ -69,7 +56,7 @@ def iterate():
             iterate()
     return num    
 
-def checkpassword(uname, passwd):
+def checkPass(uname, passwd):
 
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
@@ -85,6 +72,8 @@ def checkpassword(uname, passwd):
         else:
             print "false"
             return False
+
+
 
 go()    
 check()

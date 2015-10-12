@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session, redirect
+import member_data, post_data
 
 app=Flask(__name__)
 
@@ -15,7 +16,7 @@ def login(error=None, methods=["GET","POST"]):
     #If the user is trying to log in, verify password
     if request.method=="POST":
         #This function is anticipated to come from chloe's work
-        if database.verify(request.form['username'], request.form['password']):
+        if member_data.checkPass(request.form['username'], request.form['password']):
             session['logged']=True
             return redirect('/')
         else:

@@ -49,9 +49,13 @@ def addMember(u, p):
     conn.commit()
     
 def iterate():
+
+    conn = sqlite3.connect(db_name)
+    c = conn.cursor()
+
     q = """select id from members;"""
     num = random.randint(100,999)
-    for a in q:
+    for a in c.execute(q):
         if num == a:
             iterate()
     return num    

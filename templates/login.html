@@ -6,15 +6,19 @@
 </head>
 
 <body>
+  {% if error!=None %}
+  <h2>{{error}}</h2>
+  {% endif %}
+
   <p> {% if s.logged %} You are logged in already!  </p>
   <a href="/home">Home</a>
   <a href="/logout">Logout</a>
 
   <p> {% else %} You are not logged in! :( </p> 
-<form action="/secret" method="POST" >
-  Username: <input type="text" name="username">
-  Password: <input type="text" name="password">
-  <input type="submit" name="button" value="login">
+<form action="/login" method="POST" >
+  Username: <input type="text" name="username"><br>
+  Password: <input type="text" name="password"><br>
+  <input type="submit" name="button" value="login">  <input type="submit" name="button" value="New Account"> 
 </form>
 {% endif %}
 </body>

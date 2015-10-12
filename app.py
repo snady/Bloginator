@@ -5,7 +5,7 @@ app=Flask(__name__)
 
 @app.route('/')
 @app.route('/home')
-def about():
+def home(methods=["GET","POST"]):
     #Track whether the user has logged in
     if 'logged' not in session:
         session['logged']=False
@@ -15,8 +15,12 @@ def about():
 def login(error=None, methods=["GET","POST"]):
     #If the user is trying to log in, verify password
     if request.method=="POST":
-        #This function is anticipated to come from chloe's work
-        if member_data.checkPass(request.form['username'], request.form['password']):
+        if (request.form['button']=="New Account"):
+            member_data.addMember(request.form['username'], request.form['password'])
+            session['logged']=True
+            return redirect('/')
+        if (request.form['button']=="login"):
+            member_data.checkPass(request.form['username'], request.form['password'])
             session['logged']=True
             return redirect('/')
         else:

@@ -12,7 +12,7 @@ def home():
     return render_template('home.html',s=session)
 
 @app.route('/login',methods=["GET","POST"])
-def login(error=None):
+def login():
     #If the user is trying to log in, verify password
     if request.method=="POST":
         if (request.form['button']=="New Account"):
@@ -27,7 +27,7 @@ def login(error=None):
                 return redirect('/')
         else:
             return render_template('login.html',s=session,error="Incorrect Username/Password")
-    return render_template('login.html',s=session,error=None)
+    return render_template('login.html',s=session)
 
 #When a user clicks a button to logout, direct them here, log them out and redirect them
 @app.route('/logout')

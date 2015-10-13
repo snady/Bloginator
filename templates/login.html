@@ -6,9 +6,9 @@
 </head>
 
 <body>
-  {% if error!=None %}
+ {% if error %}
   <h2>{{error}}</h2>
-  {% endif %}
+ {% endif %}
 
   <p> {% if s.logged %} You are logged in already!  </p>
   <a href="/home">Home</a>

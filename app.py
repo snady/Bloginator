@@ -1,28 +1,30 @@
 from flask import Flask, render_template, request, session, redirect
-import member_data, post_data
+from backend import member_data, post_data
 
 app=Flask(__name__)
 
 @app.route('/')
 @app.route('/home')
-def home(methods=["GET","POST"]):
+def home():
     #Track whether the user has logged in
     if 'logged' not in session:
         session['logged']=False
     return render_template('home.html',s=session)
 
-@app.route('/login')
-def login(error=None, methods=["GET","POST"]):
+@app.route('/login',methods=["GET","POST"])
+def login(error=None):
     #If the user is trying to log in, verify password
     if request.method=="POST":
         if (request.form['button']=="New Account"):
-            member_data.addMember(request.form['username'], request.form['password'])
-            session['logged']=True
-            return redirect('/')
+            if member_data.filterUname(request.form['username'], request.form['password']):
+                session['logged']=True
+                return redirect('/')
+            else:
+                render_template('login.html',s=session,error="Username already taken")
         if (request.form['button']=="login"):
-            member_data.checkPass(request.form['username'], request.form['password'])
-            session['logged']=True
-            return redirect('/')
+            if member_data.checkPass(request.form['username'], request.form['password']):
+                session['logged']=True
+                return redirect('/')
         else:
             return render_template('login.html',s=session,error="Incorrect Username/Password")
     return render_template('login.html',s=session,error=None)

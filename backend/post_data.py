@@ -12,7 +12,7 @@ def start():
         q = """create table posts (content text, title text, user_id integer, post_id integer);"""
         c.execute(q)
 
-        q = """insert into posts values ("Hello world", 200, 1);"""
+        q = """insert into posts values ("Hello world", "first", 200, 100);"""
         c.execute(q)
 
         conn.commit()
@@ -44,3 +44,15 @@ def makeID():
                makeID()
           else:
                return num
+
+def removePost(pi):
+     
+     conn = sqlite3.connect(db_name)
+     c = conn.cursor()
+
+     q = """delete row from posts where post_id = %i"""
+     q = q%(pi)
+
+     c.execute(q)
+
+     conn.commit()

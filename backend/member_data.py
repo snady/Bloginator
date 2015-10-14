@@ -12,7 +12,7 @@ def go():
         q = """create table members (user text, pwd text, id integer);"""
         c.execute(q)
 
-        q = """insert into members values ("Theo", "TheO", 200);"""
+        q = """insert into members values ("James", "Bond", 007);"""
         c.execute(q)
 
         conn.commit()
@@ -37,6 +37,7 @@ def filterUname(uname, pwd):
             return false
         else: 
             addMember(uname, pwd)
+            return true
 
 def addMember(u, p):
 

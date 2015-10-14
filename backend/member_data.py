@@ -34,10 +34,10 @@ def filterUname(uname, pwd):
 
     for i in q:
         if i == uname:
-            return false
+            return False
         else: 
             addMember(uname, pwd)
-            return true
+            return True
 
 def addMember(u, p):
 

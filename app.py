@@ -16,12 +16,12 @@ def login():
     #If the user is trying to log in, verify password
     if request.method=="POST":
         if (request.form['button']=="New Account"):
-            if member_data.filterUname(request.form['username']):
+            if (member_data.filterUname(request.form['username'])):
                 member_data.addMember(request.form['username'], request.form['password'])
                 session['logged']=True
                 return redirect('/')
             else:
-                render_template('login.html',s=session,error="Username already taken")
+                return render_template('login.html',s=session,error="Username already taken")
         if (request.form['button']=="login"):
             if member_data.checkPass(request.form['username'], request.form['password']):
                 session['logged']=True

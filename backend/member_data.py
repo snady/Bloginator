@@ -32,9 +32,10 @@ def filterUname(uname):
     
     q = """select user from members"""
 
-    for i in q:
-        if i == uname:
+    for i in c.execute(q):
+        if i[0] == uname:
             return False
+        
     return True
 
 def addMember(u, p):

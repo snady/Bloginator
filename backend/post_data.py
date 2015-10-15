@@ -56,3 +56,22 @@ def removePost(pi):
      c.execute(q)
 
      conn.commit()
+
+
+def showPosts():
+
+     allPosts = []
+     
+     conn = sqlite3.connect(db_name)
+     c = conn.cursor()
+
+     q = """select content from posts"""
+
+     for a in c.execute(q):
+          allPosts.append(a)
+          print a
+          
+     return allPosts
+
+start()
+showPosts()

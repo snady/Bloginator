@@ -16,7 +16,7 @@ def login():
     #If the user is trying to log in, verify password
     if request.method=="POST":
         if (request.form['button']=="New Account"):
-            if member_data.filterUname(request.form['username'], request.form['password']):
+            if member_data.filterUname(request.form['username']):
                 member_data.addMember(request.form['username'], request.form['password'])
                 session['logged']=True
                 return redirect('/')

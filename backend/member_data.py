@@ -25,7 +25,7 @@ def check():
     for r in res:
         print r
 
-def filterUname(uname, pwd):
+def filterUname(uname):
     
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
@@ -35,8 +35,7 @@ def filterUname(uname, pwd):
     for i in q:
         if i == uname:
             return False
-        else: 
-            return True
+    return True
 
 def addMember(u, p):
 

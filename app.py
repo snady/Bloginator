@@ -17,6 +17,7 @@ def login():
     if request.method=="POST":
         if (request.form['button']=="New Account"):
             if member_data.filterUname(request.form['username'], request.form['password']):
+                member_data.addMember(request.form['username'], request.form['password'])
                 session['logged']=True
                 return redirect('/')
             else:

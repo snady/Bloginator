@@ -36,7 +36,6 @@ def filterUname(uname, pwd):
         if i == uname:
             return False
         else: 
-            addMember(uname, pwd)
             return True
 
 def addMember(u, p):

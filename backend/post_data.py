@@ -22,15 +22,25 @@ def addPost(post, title, user):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
 
-    id = makeID()
+    idd = makeID()
 
     q = """insert into posts values ("%s", "%s", "%i", "%i")"""
-    q = q%(post, title, user, id)
+    q = q%(post, title, findhuman(user), idd)
 
     c.execute(q)
 
     conn.commit()
 
+def findhuman(name):
+
+    conn = sqlite3.connect("memberData.db")
+    c = conn.cursor()
+
+    q = """select id from members where user = %s """
+    q = q%(name)
+    
+    return q[0]
+    
 def makeID():
 
      conn = sqlite3.connect(db_name)

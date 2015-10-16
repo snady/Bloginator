@@ -56,3 +56,5 @@ def removePost(pi):
      c.execute(q)
 
      conn.commit()
+
+start()

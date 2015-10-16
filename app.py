@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, session, redirect
 from backend import member_data, post_data
 
 app=Flask(__name__)
-
+post_counter = 0
+post_til = 0
 @app.route('/')
 @app.route('/home',methods=["GET","POST"])
 def home():
@@ -14,6 +15,12 @@ def home():
     print request.environ['REMOTE_ADDR']
     return render_template('home.html',s=session)
 
+def post_count():
+    i+=1
+    return i < post_til+10
+def add_up():
+    i=post_til
+    post_til+=10
 @app.route('/login',methods=["GET","POST"])
 def login():
     if 'logged' not in session:

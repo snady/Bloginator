@@ -12,7 +12,7 @@ def start():
         q = """create table posts (content text, title text, user_id integer, post_id integer);"""
         c.execute(q)
 
-        q = """insert into posts values ("Hello world", "first", 200, 100);"""
+        q = """insert into posts values ("Hello world", "first", 007, 100);"""
         c.execute(q)
 
         conn.commit()
@@ -67,8 +67,6 @@ def removePost(pi):
 
      conn.commit()
 
-#<<<<<<< HEAD
-
 def showPosts():
 
      allPosts = []
@@ -86,6 +84,3 @@ def showPosts():
 
 start()
 showPosts()
-#=======
-start()
-#>>>>>>> d8b3b7553ddc8ca12fe425ebf9630769aa471f11

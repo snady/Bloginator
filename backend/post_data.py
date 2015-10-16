@@ -67,7 +67,7 @@ def removePost(pi):
 
      conn.commit()
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
 def showPosts():
 
@@ -86,6 +86,6 @@ def showPosts():
 
 start()
 showPosts()
-=======
+#=======
 start()
->>>>>>> d8b3b7553ddc8ca12fe425ebf9630769aa471f11
+#>>>>>>> d8b3b7553ddc8ca12fe425ebf9630769aa471f11

@@ -1,6 +1,7 @@
 import os, sqlite3, csv, random
 
 db_name = "comments_data.db"
+pdb_name = "postData.db"
 
 def start():
 
@@ -40,3 +41,21 @@ def makeID():
             iterate()
     return num
 
+def findPost(id):
+
+    ret = []
+    
+    conn = sqlite3.connect(db_name)
+    c = conn.cursor()
+
+    q = """select words from comments where post_id = %i"""
+    q = q%(id)
+
+    for a in c.execute(q):
+        ret.append(a[0])
+
+    return ret
+    
+    
+
+start()

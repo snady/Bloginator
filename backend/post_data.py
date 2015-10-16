@@ -12,7 +12,7 @@ def start():
         q = """create table posts (content text, title text, user_id integer, post_id integer);"""
         c.execute(q)
 
-        q = """insert into posts values ("Hello world", "first", 200, 100);"""
+        q = """insert into posts values ("Hello world", "first", 007, 100);"""
         c.execute(q)
 
         conn.commit()

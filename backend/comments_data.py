@@ -13,6 +13,8 @@ def start():
         q = """create table comments (user_id integer, post_id integer, words text, comm_id integer)"""
         c.execute(q)
 
+        q = """insert into comments values (007, 100, "nice post", 123)"""
+        
         conn.commit()
 
 def addcomment(user, post, info):
@@ -22,7 +24,7 @@ def addcomment(user, post, info):
 
     i = makeID()
     
-    q = """insert into comments values ("","","")"""
+    q = """insert into comments values ("%i","%i","%s", "%i")"""
     q = q%(user, post, info, i)
 
     c.execute(q)

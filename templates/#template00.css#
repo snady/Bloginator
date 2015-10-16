@@ -15,11 +15,16 @@ h2{
     text-align: center;
 }
 p {
-    border-style: solid;
-    border-width: 2px;
-    color:black;
-    font-size:12px;
-    background:white
+    .reg {
+	border-style: solid;
+	border-width: 2px;
+	color:black;
+	font-size:12px;
+	background:white
+    }
+    .side {
+	
+    }
 }
 div {
     color:black;

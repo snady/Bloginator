@@ -9,8 +9,6 @@
       <h1>Bloginator</h1>
       <h2>A page I've lifted from Pure.css</h2>
 
-{% block content %}
-
       <nav class="nav">
 	{% if s.logged %}
         <ul class="nav-list">
@@ -24,10 +22,9 @@
         </ul>
 	{% endif %}
       </nav>
-      
-    </div>
+      </div>
   </div>
-{% endblock %}
+
 <div class="content pure-u-1 pure-u-md-3-4">
   {% if s.logged %}
   <form action="/home" method="POST">
@@ -38,36 +35,38 @@
   </form>
   {% endif %}
             <div class="posts">
-                <h1 class="content-subhead" style="color:white;">Recent Posts</h1>
-{% for item in post %}
-                <section class="post">
-                    <header class="post-header">
+              <h1 class="content-subhead" style="color:white;">Recent Posts</h1>
+	      {% for item in post %}
+	      {% if post_count %}
+	      
+              <section class="post">
+                <header class="post-header">
 
-                        <h2 class="post-title" style="text-align:left; font-style: italic; background:rgb(21, 69, 93); color:white;">{{item.title}}</h2>
+                  <h2 class="post-title" style="text-align:left; font-style: italic; background:rgb(21, 69, 93); color:white;">{{item.title}}</h2>
 
-                        <p class="post-meta">
-                            By <a class="post-author" href="#">{{item.author}}</a>
-                    </header>
+                  <p class="post-meta">
+                    By <a class="post-author" href="#">{{item.author}}</a>
+                </header>
 
-                    <div class="post-description">
-                        <p>
-                          {{item.text}}
-			  <br>
-			  <a href="#">Comments</a>
-                        </p>
-                    </div>
-                </section>
-{% endfor %}		
-
-            <div class="footer">
-                <div class="pure-menu pure-menu-horizontal">
-                    <ul>
-                        <li class="pure-menu-item"><a href="#">About</a></li>
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
-                        <li class="pure-menu-item"><a href="https://github.com/hfilosa/Bloginator" class="pure-menu-link">GitHub</a></li>
-                    </ul>
+                <div class="post-description">
+                  <p>
+                    {{item.text}}
+		    <br>
+		    <a href="#">Comments</a>
+                  </p>
                 </div>
-            </div>
-        </div>
-    </div>
+              </section>
+	      {% endif %}
+	      {% endfor %}
+	      <div class="footer">
+		<div class="pure-menu pure-menu-horizontal">
+		  <ul>
+		    <li class="pure-menu-item"><a style="text-align:center;color:white;"  href="#">About</a></li>
+		    <li><a style="text-align:center;color:white;" href="#" class="pure-menu-link">Twitter</a></li>
+		    <li><a style="text-align:center;color:white;" href="https://github.com/hfilosa/Bloginator" class="pure-menu-link">GitHub</a></li>
+		  </ul>
+		</div>
+	    </div>
+</div>
+</div>
 </div>

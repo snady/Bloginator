@@ -24,8 +24,7 @@ def addPost(post, title, user):
 
     idd = makeID()
 
-    q = """insert into posts values ("%s", "%s", "%i", "%i")"""
-    q = q%(post, title, findhuman(user), idd)
+    q = """insert into posts values ("%s", "%s", "%i", "%i")""" %(post, title, findhuman(user), idd) 
 
     c.execute(q)
 

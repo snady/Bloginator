@@ -29,6 +29,11 @@
   </div>
 {% endblock %}
 <div class="content pure-u-1 pure-u-md-3-4">
+  <form action="/home" method="Post">
+    Title: <input type="text" name="title"><br>
+    <textarea rows="5" cols="20" name="story">New Story</textarea><br>
+    <input type="submit" name="button" value="newStory">
+  </form>
         <div>
             <!-- A wrapper for all the blog posts -->
             <div class="posts">

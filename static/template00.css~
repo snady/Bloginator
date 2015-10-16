@@ -4,7 +4,6 @@ h1 {
     font-family: Impact, sans-serif;
     font-style: italic;
 	text-align: center;
-	padding: 0em;
 }
 body {
      background-image:url("http://cdn.alleywatch.com/wp-content/uploads/2014/08/MIKE-ZAMANKSY.jpg");

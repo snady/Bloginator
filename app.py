@@ -12,7 +12,6 @@ def home():
         session['logged']=False
     if request.method=="POST":
         post_data.addPost(request.form['story'],request.form['title'],session['username'])
-    print request.environ['REMOTE_ADDR']
     return render_template('home.html',s=session)
 
 def post_count():

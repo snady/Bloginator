@@ -12,7 +12,7 @@ def start():
         q = """create table posts (content text, title text, user_id integer, post_id integer);"""
         c.execute(q)
 
-        q = """insert into posts values ("Hello world", "first", 200, 100);"""
+        q = """insert into posts values ("Hello world", "first", 007, 100);"""
         c.execute(q)
 
         conn.commit()
@@ -22,15 +22,25 @@ def addPost(post, title, user):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
 
-    id = makeID()
+    idd = makeID()
 
     q = """insert into posts values ("%s", "%s", "%i", "%i")"""
-    q = q%(post, title, user, id)
+    q = q%(post, title, findhuman(user), idd)
 
     c.execute(q)
 
     conn.commit()
 
+def findhuman(name):
+
+    conn = sqlite3.connect("memberData.db")
+    c = conn.cursor()
+
+    q = """select id from members where user = %s """
+    q = q%(name)
+    
+    return q[0]
+    
 def makeID():
 
      conn = sqlite3.connect(db_name)
@@ -57,8 +67,6 @@ def removePost(pi):
 
      conn.commit()
 
-#<<<<<<< HEAD
-
 def showPosts():
 
      allPosts = []
@@ -76,6 +84,3 @@ def showPosts():
 
 start()
 showPosts()
-#=======
-start()
-#>>>>>>> d8b3b7553ddc8ca12fe425ebf9630769aa471f11

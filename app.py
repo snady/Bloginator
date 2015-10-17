@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, session, redirect
 from backend import member_data, post_data
 
+post_til = 10
+i = 0
 app=Flask(__name__)
-post_counter = 0
-post_til = 0
 @app.route('/')
 @app.route('/home',methods=["GET","POST"])
 def home():
@@ -12,14 +12,17 @@ def home():
         session['logged']=False
     if request.method=="POST":
         post_data.addPost(request.form['story'],request.form['title'],session['username'])
-    return render_template('home.html',s=session)
+    return render_template('home.html',s=session, i=i, post_til = post_til)
 
 def post_count():
     i+=1
-    return i < post_til+10
+    return i < post_til
+@app.route('/add_more_posts/')
 def add_up():
-    i=post_til
+    i=0
     post_til+=10
+    return
+
 @app.route('/login',methods=["GET","POST"])
 def login():
     if 'logged' not in session:

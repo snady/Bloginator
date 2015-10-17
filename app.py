@@ -21,7 +21,7 @@ def post_count():
 def add_up():
     i=0
     post_til+=10
-    return
+    return render_template('home.html',s=session, i=i, post_til = post_til)
 
 @app.route('/login',methods=["GET","POST"])
 def login():

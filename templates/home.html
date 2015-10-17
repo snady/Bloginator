@@ -34,11 +34,13 @@
     <input type="submit" name="button" value="Post">
   </form>
   {% endif %}
+
             <div class="posts">
               <h1 class="content-subhead" style="color:white;">Recent Posts</h1>
 	      {{post_counter}}
-	      {% for item in post %}
-	      {% if post_count %}
+	      {% for item in posts %}
+	      {% if loop.index<post_til %}
+		{% if loop.index>(post_til-10) %}
 	      
               <section class="post">
                 <header class="post-header">
@@ -57,6 +59,7 @@
                   </p>
                 </div>
               </section>
+	      {% endif %}
 	      {% endif %}
 	      {% endfor %}
 	      <a href="/add_more_posts">More posts...</a>

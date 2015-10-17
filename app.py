@@ -4,6 +4,7 @@ from backend import member_data, post_data
 post_til = 10
 i = 0
 app=Flask(__name__)
+
 @app.route('/')
 @app.route('/home',methods=["GET","POST"])
 def home():
@@ -12,16 +13,12 @@ def home():
         session['logged']=False
     if request.method=="POST":
         post_data.addPost(request.form['story'],request.form['title'],session['username'])
-    return render_template('home.html',s=session, i=i, post_til = post_til)
+    return render_template('home.html',s=session,posts=post_data.showPosts(), i=i, post_til = post_til)
 
-def post_count():
-    i+=1
-    return i < post_til
 @app.route('/add_more_posts/')
 def add_up():
-    i=0
     post_til+=10
-    return render_template('home.html',s=session, i=i, post_til = post_til)
+    return redirect("/home")
 
 @app.route('/login',methods=["GET","POST"])
 def login():

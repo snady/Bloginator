@@ -35,10 +35,11 @@ def findhuman(name):
     conn = sqlite3.connect("memberData.db")
     c = conn.cursor()
 
-    q = """select id from members where user = %s """
+    q = (""" select id from members where user = "%s" """)
     q = q%(name)
-    
-    return q[0]
+
+    for a in c.execute(q):
+         return a[0]
     
 def makeID():
 
@@ -82,4 +83,3 @@ def showPosts():
      return allPosts
 
 start()
-showPosts()

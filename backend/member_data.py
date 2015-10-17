@@ -80,4 +80,4 @@ def checkPass(uname, passwd):
 
 
 go()    
-check()
+#check()

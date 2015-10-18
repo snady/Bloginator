@@ -70,7 +70,9 @@ def comment():
     if (session['logged']!=True):
         return redirect('/login')
     session['in_comments']=True
-    session['post_id']=comments_data.findPost(request.form['post_id'])
+    session['comments']=comments_data.findPost(request.form['post_id'])
+    session['comment_name']=request.form['comment_name']
+    session['comment_text']=request.form['comment_text']
     return redirect('/')
 
 

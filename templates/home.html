@@ -29,12 +29,17 @@
             <div class="posts">
 	      {% if s.in_comments %}
 	      <h1 class="content-subhead" style="color:white;">Thread</h1>
-	      <h2 class="post-title" style="text-align:left; font-style: italic; background:rgb(21, 69, 93); color:white;">the post's name</h2>
+	      <h2 class="post-title" style="text-align:left; font-style: italic; background:rgb(21, 69, 93); color:white;">{{s.comment_name}}</h2>
+	      <div class="post-description">
+                  <p>
+                    {{s.comment_text}}
+		    </p>
+	      </div>
 	      <p><a href="/set_comment_off">Back to home</a></p>
-	      {% for item in post %}
+	      {% for item in s.comments %}
 	      <p>
-		<p style="text-style:bold;">whatever yall are calling the author</p>
-		whatever the comment is
+		<p style="text-style:bold;">item[0]</p>
+		item[1]
 	      </p>
 	      <br>
 	      {% endfor %}
@@ -68,6 +73,8 @@
 		    <br>
 		    <form action="/comments" method="POST">
 		    <input type="hidden" name="post_id" value={{item[4]}}>
+		    <input type="hidden" name="comment_name" value={{item[2]}}>
+		    <input type="hidden" name="comment_text" value={{item[1]}}>
 		    <input type="submit" name="button" value="comment">
 		    </form>
                   </p>

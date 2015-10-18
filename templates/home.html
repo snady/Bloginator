@@ -36,6 +36,9 @@
   {% endif %}
 
             <div class="posts">
+	      {% if s.in_comments %}
+	      <p><a href="/set_comment_off">Back</a></p>	      
+	      {% else %}
               <h1 class="content-subhead" style="color:white;">Recent Posts</h1>
 	      {{post_counter}}
 	      {% for item in posts %}
@@ -55,7 +58,7 @@
                   <p>
                     {{item[0]}}
 		    <br>
-		    <a href="#">Comments</a>
+		    <p><a href="/set_comment_on">Comments</a></p>
                   </p>
                 </div>
               </section>
@@ -67,6 +70,7 @@
 		<a href="/remove_more_posts">Last 10 Posts</a>
 		{% endif %}
 	      <a href="/add_more_posts">Next 10 Posts</a>
+	      {% endif %}
 	      <div class="footer">
 		<div class="pure-menu pure-menu-horizontal">
 		  <ul>

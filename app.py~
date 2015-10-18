@@ -11,10 +11,10 @@ def home():
         session['logged']=False
     if 'post_til' not in session:
         session['post_til']=10
-    if 'in_comments' not in session:
-        session['in_comments']=False
-    if 'comment_index' not in session:
-        session['comment_index']=0
+if 'in_comments' not in session:
+	session['in_comments']=False
+if 'comment_index' not in session:
+	session['comment_index']=0
     if request.method=="POST":
         post_data.addPost(request.form['story'],request.form['title'],session['username'])
     return render_template('home.html',s=session,posts=post_data.showPosts())
@@ -31,12 +31,12 @@ def go_back():
 
 @app.route('/set_comment_on')
 def set_comment_on():
-	session['in_comments']=True
+	session[in_comments]=True
 	return redirect("/home")
 
 @app.route('/set_comment_off')
 def set_comment_off():
-	session['in_comments']=False
+	session[in_comments]=False
 	return redirect("/home")
 
 @app.route('/login',methods=["GET","POST"])

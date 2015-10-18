@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect
-from backend import member_data, post_data
+from backend import member_data, post_data, comments_data
 
 app=Flask(__name__)
 
@@ -53,6 +53,13 @@ def login():
 def logout():
     session['logged'] = False
     return redirect('/login')
+
+@app.route("/comment",methods=["GET","POST"])
+def comment():
+    if (s['logged']!=True):
+        return redirect('/login')
+    return render_template('comment.html',s=session)
+
 
 if __name__=="__main__":
     app.debug = True

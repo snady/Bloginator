@@ -12,7 +12,7 @@ def go():
         q = """create table members (user text, pwd text, id integer);"""
         c.execute(q)
 
-        q = """insert into members values ("James", "Bond", 007);"""
+        q = """insert into members values ("James", "Bond", 700);"""
         c.execute(q)
 
         conn.commit()

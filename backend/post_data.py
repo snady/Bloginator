@@ -74,12 +74,19 @@ def showPosts():
      conn = sqlite3.connect(db_name)
      c = conn.cursor()
 
-     q = """select content from posts"""
+     q = """select * from posts"""
 
      for a in c.execute(q):
-          allPosts.append(a)
-          print a
+          b = []
+          for x in a:
+               b.append(x)
+          allPosts.append(b)
+
+
+     for w in allPosts:
+          print w
           
      return allPosts
 
 start()
+showPosts()

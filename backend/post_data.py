@@ -1,6 +1,6 @@
 import os, sqlite3, csv, random
 
-db_name = "postData.db"
+db_name = "postsData.db"
 
 def start():
 
@@ -32,7 +32,7 @@ def addPost(post, title, user):
 
 def findhuman(name):
 
-    conn = sqlite3.connect("memberData.db")
+    conn = sqlite3.connect("membersData.db")
     c = conn.cursor()
 
     q = (""" select id from members where user = "%s" """)
@@ -87,14 +87,23 @@ def showPosts():
      return allPosts
 
 def find(user):
-    conn = sqlite3.connect("memberData.db")
+    conn = sqlite3.connect("membersData.db")
     c = conn.cursor()
 
-    q = (""" select user from members where user = "%i" """)
-    q = q%(user)
+    q = """select * from members"""
 
     for a in c.execute(q):
-         return a[0]
+         print a[2]
+         print user
+         if user == a[2]:
+              return a[0]
+
+#    q = (""" select user from members where user = "%i" """)
+
+#    q = q%(user)
+
+#    for a in c.execute(q):
+#         return a[0]
 
 
 start()

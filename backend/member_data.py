@@ -1,6 +1,6 @@
 import os, sqlite3, csv, random 
 
-db_name = "memberData.db"
+db_name = "membersData.db"
 
 def go():
 
@@ -13,7 +13,10 @@ def go():
         c.execute(q)
 
         q = """insert into members values ("James", "Bond", 700);"""
+        w = """insert into members values ("Roger", "Rabbit", 101);"""
+
         c.execute(q)
+        c.execute(w)
 
         conn.commit()
 

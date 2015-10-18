@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect
-from backend import member_data, post_data
+from backend import member_data, post_data, comments_data
 
 app=Flask(__name__)
 

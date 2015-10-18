@@ -5,7 +5,7 @@ pdb_name = "postData.db"
 
 def start():
 
-    if (not so.path.exists(db_name)):
+    if (not os.path.exists(db_name)):
 
         conn = sqlite3.connect(db_name)
         c = conn.cursor()
@@ -59,5 +59,4 @@ def findPost(id):
     return ret
     
     
-
 start()

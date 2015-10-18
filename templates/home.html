@@ -50,25 +50,27 @@
 	      {% endif %}
               <h1 class="content-subhead" style="color:white;">Recent Threads</h1>
 	      
-	      {{post_counter}}
 	      {% for item in posts %}
 	      {% if loop.index<s.post_til %}
 		{% if loop.index>(s.post_til-10) %}
 		
 		<section class="post">
                   <header class="post-header">
-
-                    <h2 class="post-title" style="text-align:left; font-style: italic; background:rgb(21, 69, 93); color:white;">{{item[1]}}</h2>
+		    
+                    <h2 class="post-title" style="text-align:left; font-style: italic; background:rgb(21, 69, 93); color:white;">{{item[2]}}</h2>
 
                     <p class="post-meta">
-                    By <a class="post-author" href="#">{{item[2]}}</a>
+                    By <a class="post-author" href="#">{{item[5]}}</a>
                 </header>
 
                 <div class="post-description">
                   <p>
-                    {{item[0]}}
+                    {{item[1]}}
 		    <br>
-		    <p><a href="/set_comment_on">Comments</a></p>
+		    <form action="/comments" method="POST">
+		    <input type="hidden" name="post_id" value={{item[4]}}>
+		    <input type="submit" name="button" value="comment">
+		    </form>
                   </p>
                 </div>
               </section>

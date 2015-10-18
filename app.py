@@ -29,15 +29,10 @@ def go_back():
     session['post_til']-=10
     return redirect("/home")
 
-@app.route('/set_comment_on')
-def set_comment_on():
-	session['in_comments']=True
-	return redirect("/home")
-
 @app.route('/set_comment_off')
 def set_comment_off():
-	session['in_comments']=False
-	return redirect("/home")
+    session['in_comments']=False
+    return redirect("/home")
 
 @app.route('/login',methods=["GET","POST"])
 def login():
@@ -68,11 +63,13 @@ def logout():
     session['logged'] = False
     return redirect('/login')
 
-@app.route("/comment",methods=["GET","POST"])
+@app.route("/comments",methods=["GET","POST"])
 def comment():
     if (session['logged']!=True):
         return redirect('/login')
-    return render_template('comment.html',s=session)
+    session['in_comments']=True
+    session['post_id']=comments_data.findPost(request.form['post_id'])
+    return redirect('/')
 
 
 if __name__=="__main__":

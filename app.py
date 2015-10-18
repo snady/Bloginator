@@ -17,7 +17,9 @@ def home():
         session['comment_index']=0
     if request.method=="POST":
         post_data.addPost(request.form['story'],request.form['title'],session['username'])
-    return render_template('home.html',s=session,posts=post_data.showPosts())
+    post=post_data.showPosts();
+    post.reverse();
+    return render_template('home.html',s=session,posts=post)
 
 @app.route('/add_more_posts/')
 def add_up():

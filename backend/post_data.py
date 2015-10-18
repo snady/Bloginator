@@ -78,15 +78,23 @@ def showPosts():
 
      for a in c.execute(q):
           b = []
+          b.append(find(a[2]))
           for x in a:
                b.append(x)
           allPosts.append(b)
 
-
-     for w in allPosts:
-          print w
-          
      return allPosts
+
+def find(user):
+    conn = sqlite3.connect("memberData.db")
+    c = conn.cursor()
+
+    q = (""" select user from members where user = "%i" """)
+    q = q%(user)
+
+    for a in c.execute(q):
+         return a[0]
+
 
 start()
 showPosts()

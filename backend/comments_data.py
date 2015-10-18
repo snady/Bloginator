@@ -13,7 +13,7 @@ def start():
         q = """create table comments (user_id integer, post_id integer, words text, comm_id integer)"""
         c.execute(q)
 
-        q = """insert into comments values (007, 100, "nice post", 123)"""
+        q = """insert into comments values (700, 100, "nice post", 123)"""
         
         conn.commit()
 
@@ -43,15 +43,18 @@ def makeID():
             iterate()
     return num
 
-def findPost(id):
+def findPost(num):
 
     ret = []
     
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
 
-    q = """select words from comments where post_id = %i"""
-    q = q%(id)
+    q = """select words from comments where post_id = %i;"""
+    
+    q = q%(int(num))
+
+    print q
 
     for a in c.execute(q):
         ret.append(a[0])

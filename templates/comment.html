@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <head>
   <link type="text/css" rel="stylesheet" href="static/template00.css" }}>
-  <title>Bloginator</title>
+  <title>Comment</title>
 </head>
+
 <div id="layout" class="pure-g">
   <div class="sidebar pure-u-1 pure-u-md-1-4">
     <div class="header">
@@ -11,16 +12,10 @@
 
       <nav class="nav">
         <ul class="nav-list">
-	  {% if s.logged %}
           <li class="nav-item">
-            <a class="pure-button" href="/logout">De-Login</a>
-          </li>
-	  {% else %}
-          <li class="nav-item">
-            <a class="pure-button" href="/login">Login</a>
+            <a class="pure-button" href="/home">Home</a>
           </li>
         </ul>
-	{% endif %}
       </nav>
       </div>
   </div>

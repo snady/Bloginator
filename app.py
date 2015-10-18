@@ -54,6 +54,13 @@ def logout():
     session['logged'] = False
     return redirect('/login')
 
+@app.route("/comment",methods=["GET","POST"])
+def comment():
+    if (s['logged']!=True):
+        return redirect('/login')
+    return render_template('comment.html',s=session)
+
+
 if __name__=="__main__":
     app.debug = True
     app.secret_key="Don't tell anyone!"

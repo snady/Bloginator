@@ -60,7 +60,7 @@ def removePost(pi):
      conn = sqlite3.connect(db_name)
      c = conn.cursor()
 
-     q = """delete row from posts where post_id = %i"""
+     q = """delete from posts where post_id = %i"""
      q = q%(pi)
 
      c.execute(q)

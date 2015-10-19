@@ -28,9 +28,8 @@ def make_the_goddamn_comment():
         thepostnum = int(session['post_id'])
         thecomment = request.form['thecomment']
         comments_data.addcomment(theUname,thepostnum,thecomment)
-    session['in_comments']=False
-    return redirect("/home")
-
+        session['comments']=comments_data.findPost(session['post_id'])
+    return redirect("/")
 
 @app.route('/rm_post',methods=["GET","POST"])
 def rm_this_post():

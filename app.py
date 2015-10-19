@@ -21,6 +21,17 @@ def home():
     post.reverse();
     return render_template('home.html',s=session,posts=post)
 
+@app.route('/make_comment',methods=["GET","POST"])
+def make_the_goddamn_comment():
+    if request.method=="POST":
+        theUname = int(post_data.findhuman(session['username']))
+        thepostnum = int(session['post_id'])
+        thecomment = request.form['thecomment']
+        comments_data.addcomment(theUname,thepostnum,thecomment)
+    session['in_comments']=False
+    return redirect("/home")
+
+
 @app.route('/rm_post',methods=["GET","POST"])
 def rm_this_post():
     if request.method=="POST":
@@ -77,7 +88,9 @@ def comment():
     if (session['logged']!=True):
         return redirect('/login')
     session['in_comments']=True
-    session['comments']=comments_data.findPost(request.form['post_id'])
+    session['comments']=comments_data.findPost(int(request.form['post_id']))
+    print session['comments']
+    session['post_id']=int(request.form['post_id'])
     session['comment_name']=request.form['comment_name']
     session['comment_text']=request.form['comment_text']
     return redirect('/')

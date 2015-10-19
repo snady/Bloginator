@@ -21,6 +21,13 @@ def home():
     post.reverse();
     return render_template('home.html',s=session,posts=post)
 
+@app.route('/rm_post',methods=["GET","POST"])
+def rm_this_post():
+    if request.method=="POST":
+        the_post_id = request.form['post_id']
+        post_data.removePost(int(the_post_id))
+        return redirect("/home")
+
 @app.route('/add_more_posts/')
 def add_up():
     session['post_til']+=10

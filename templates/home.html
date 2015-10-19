@@ -11,8 +11,10 @@
       <nav class="nav">
         <ul class="nav-list">
 	  {% if s.logged %}
+          <h2>Welcome back, {{s.username}}!</h2>
           <li class="nav-item">
             <a class="pure-button" href="/logout">De-Login</a>
+
           </li>
 	  {% else %}
           <li class="nav-item">
@@ -77,6 +79,17 @@
 		    <input type="hidden" name="comment_text" value={{item[1]}}>
 		    <input type="submit" name="button" value="comment">
 		    </form>
+                    {% if s.logged %}
+                    {% if (item[0] == s.username): %}
+                    <br>
+		    <form action="/rm_post" method="POST">
+		    <input type="hidden" name="post_id" value={{item[4]}}>
+		    <input type="hidden" name="comment_name" value={{item[2]}}>
+		    <input type="hidden" name="comment_text" value={{item[1]}}>
+		    <input type="submit" name="button" value="Remove Post">
+		    </form>
+                    {% endif %}
+                    {% endif %}
                   </p>
                 </div>
               </section>

@@ -1,59 +1,40 @@
-import os, sqlite3, csv, random 
+import os, sqlite3, csv, random
 
-db_name = "membersData.db"
+db_name = "comments_data.db"
+pdb_name = "postData.db"
+mdb_name = "membersData.db"
 
-def go():
+def start():
 
     if (not os.path.exists(db_name)):
 
         conn = sqlite3.connect(db_name)
         c = conn.cursor()
 
-        q = """create table members (user text, pwd text, id integer);"""
+        q = """create table comments (user_id integer, post_id integer, words text, comm_id integer)"""
         c.execute(q)
 
-        q = """insert into members values ("James", "Bond", 700);"""
-        w = """insert into members values ("Roger", "Rabbit", 101);"""
-
-        c.execute(q)
-        c.execute(w)
-
+        q = """insert into comments values (700, 100, "nice post", 123)"""
+        
         conn.commit()
 
-def check():
+def addcomment(user, post, info):
+
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    x = """SELECT * FROM members"""
-    res = c.execute(x)
-    for r in res:
-        print r
 
-def filterUname(uname):
+    i = makeID()
     
-    conn = sqlite3.connect(db_name)
-    c = conn.cursor()
-    
-    q = """select user from members"""
+    q = """insert into comments values ("%i","%i","%s", "%i")"""
+    q = q%(user, post, info, i)
 
-    for i in c.execute(q):
-        if i[0] == uname:
-            return False
-        
-    return True
-
-def addMember(u, p):
-
-    conn = sqlite3.connect(db_name)
-    c = conn.cursor()
-    i = iterate()
-    q = """insert into members values ("%s","%s",%i);"""
-    q = q%(u,p,i)
     c.execute(q)
     conn.commit()
-    
-def iterate():
 
-    conn = sqlite3.connect(db_name)
+
+def makeID():
+
+    conn = sqlite3.connect(mdb_name)
     c = conn.cursor()
 
     q = """select id from members;"""
@@ -61,26 +42,25 @@ def iterate():
     for a in c.execute(q):
         if num == a:
             iterate()
-    return num    
+    return num
 
-def checkPass(uname, passwd):
+def findPost(num):
 
+    ret = []
+    
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    q = """ select pwd from members where user = "%s" """ 
-    q = q%(uname)
 
-    for line in c.execute(q):
-        print passwd
-        print line[0]
-        if line[0] == passwd:
-            print "true"
-            return True
-        else:
-            print "false"
-            return False
+    q = """select words from comments where post_id = %i;"""
+    
+    q = q%(int(num))
 
+    print q
 
+    for a in c.execute(q):
+        ret.append(a[0])
 
-go()    
-#check()
+    return ret
+    
+    
+start()

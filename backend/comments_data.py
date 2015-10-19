@@ -2,6 +2,7 @@ import os, sqlite3, csv, random
 
 db_name = "comments_data.db"
 pdb_name = "postData.db"
+mdb_name = "membersData.db"
 
 def start():
 
@@ -33,7 +34,7 @@ def addcomment(user, post, info):
 
 def makeID():
 
-    conn = sqlite3.connect(db_name)
+    conn = sqlite3.connect(mdb_name)
     c = conn.cursor()
 
     q = """select id from members;"""

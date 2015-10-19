@@ -37,13 +37,18 @@
                     {{s.comment_text}}
 		    </p>
 	      </div>
-	      <p><a href="/set_comment_off">Back to home</a></p>
+              <form action="/make_comment" method="POST">
+                <textarea rows="3" cols="100" name="thecomment">Your Comment</textarea><br>
+                <input type="submit" name="button" value="Post Comment">
+              </form><br><li class="nav-item">
+	      <a class="pure-button" href="/set_comment_off">Back to home</a>
+              </li>
 	      {% for item in s.comments %}
-	      <p>
-		<p style="text-style:bold;">item[0]</p>
-		item[1]
-	      </p>
-	      <br>
+
+		<p style="text-style:bold;">{{item}}</p><br>
+
+	      
+
 	      {% endfor %}
 	      {% else %}
 	      {% if s.logged %}
@@ -74,9 +79,9 @@
                     {{item[1]}}
 		    <br>
 		    <form action="/comments" method="POST">
-		    <input type="hidden" name="post_id" value={{item[4]}}>
-		    <input type="hidden" name="comment_name" value={{item[2]}}>
-		    <input type="hidden" name="comment_text" value={{item[1]}}>
+		    <input type="hidden" name="post_id" value="{{item[4]}}">
+		    <input type="hidden" name="comment_name" value="{{item[2]}}">
+		    <input type="hidden" name="comment_text" value="{{item[1]}}">
 		    <input type="submit" name="button" value="comment">
 		    </form>
                     {% if s.logged %}

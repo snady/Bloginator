@@ -37,7 +37,7 @@ def removePost(pi):
     posts.delete_one({'id': pi})
     
 def showPosts():
-    
+    return posts.find()
 
 def makeID():
      num = random.randint(100,999)

@@ -2,7 +2,7 @@ import csv, pymongo, random
 from pymongo import MongoClient
 
 client = MongoClient()
-db_name = "data.db"
+db_name = "data"
 userCollection = "users"
 postCollection = "posts"
 
@@ -16,11 +16,34 @@ def addMember(user, password):
 
 def check():
     for r in users.find():
-        print r["username"]
+        print r
 
 def filterUname(user):
     return users.find_one({"username": user}) == None
 
 def checkPass(user, password):
-    return users.find_one({"username": user}) == user and users.find_one({"username": user})["password"] = password
-        
+    return users.find_one({"username": user}) != None and users.find_one({"username": user})["password"] == password
+
+
+
+
+
+# POSTS/COMMENTS
+
+def addPost(post, title, user):
+    posts.insert_one({'post': post, 'title': title, 'user': user, 'id': makeID()})
+
+def removePost(pi):
+    posts.delete_one({'id': pi})
+    
+def showPosts():
+    
+
+def makeID():
+     num = random.randint(100,999)
+     for x in posts.find():
+          if x['id'] == num:
+               makeID()
+          else:
+               return num
+

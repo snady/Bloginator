@@ -38,6 +38,6 @@ Middleware - Sandy Fang
 
 Deadlines
 
-Comments on codes: 11/1/15
+Comments on codes: 11/2/15
 
 The whole project: 11/4/15

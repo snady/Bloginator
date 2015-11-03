@@ -35,7 +35,7 @@ def showPosts():
         print r
 
 def addPost(post, title, user):
-    posts.insert_one({'post': post, 'title': title, 'user': user, 'id': makeID()})
+    posts.insert_one({'post': post, 'title': title, 'user': user, 'id': makeID(), 'comments': []})
 
 def findPost(id):
     return posts.find_one({'id': id})
@@ -44,14 +44,15 @@ def removePost(pi):
     posts.delete_one({'id': pi})
 
 def makeID():
-     num = random.randint(100,999)
-     for x in posts.find():
-          if x['id'] == num:
-               makeID()
-          else:
-               return num
+    num = random.randint(100,999)
+    for x in posts.find():
+        if x['id'] == num:
+            makeID()
+        else:
+            return num
+    return num
 
 def addComment(user, post, info):
-    posts.update_one({'id': post}, {'$set': {'comments': {'user': user, 'info': info}}}, upsert = False)
+    posts.update_one({'id': post}, {'$push': {'comments': {'user': user, 'info': info}}}, upsert = False)
         
 

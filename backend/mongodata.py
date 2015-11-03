@@ -1,5 +1,6 @@
 import csv, pymongo, random
 from pymongo import MongoClient
+import datetime
 
 conn = MongoClient()
 db = conn['data']
@@ -31,15 +32,14 @@ def showPosts():
     for r in posts.find():
         print r
 
-def addPost(user, titl, txt):
-    users.update_one({'name': user}, {'$push': {'posts': {'title': titl, 'text': txt, 'comments':[{}]}}}, upsert = False)
-    #users.update({'name': user}, {'posts': post, 'title': title, 'user': user, 'id': makeID(), 'comments': []})
+def addPost(user, titl, txt, idd):
+    users.update_one({'name': user}, {'$push': {'posts': {'title': titl, 'text': txt, 'created':str(datetime.datetime.now()), 'id':idd, 'comments':[{}]}}}, upsert = False)
 
-def findPost(id):
-    return posts.find_one({'id': id})
+def findPost(idd):
+    return users.find_one({'id': idd})
     
-def removePost(pi):
-    posts.delete_one({'id': pi})
+def removePost(user, idd):
+    users.update_one({'name': user}, {'$pull': {'posts': {'id': idd}}})
 
 def makeID():
     num = random.randint(100,999)
@@ -54,4 +54,5 @@ def addComment(user, post, info):
     users.update_one({'id': post}, {'$push': {'comments': {'user': user, 'info': info}}}, upsert = False)
         
 
-addPost("myrseeer", "hi", "my past")
+#addPost("myrseeer", "shi", "h", 2)
+#removePost("myrseeer", 1)

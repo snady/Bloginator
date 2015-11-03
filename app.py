@@ -1,17 +1,20 @@
 from flask import Flask, render_template, request, session, redirect
 from backend import member_data, post_data, comments_data
 from pymongo import MongoClient
+import datetime
 
 app=Flask(__name__)
 
 conn = MongoClient('localhost', 27017)
 db = conn['data']
 members = db['members']
-katherine = {"name": "Katherine", "post": "There once was an ugly barnacle"}
-members.insert_one(katherine)
+init = {"name": "init","posts": [{"title":"init","text":"init", "created":str(datetime.date.today()), "comments": [{"user":"init","comment":"init","created":str(datetime.date.today())}]}]}
+
+members.insert_one(init)
 
 print "MONGODB: "
 print db.collection_names()
+print members.find_one({"name":"init"})
 
 '''
 @app.route('/')

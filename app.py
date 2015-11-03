@@ -8,7 +8,7 @@ app=Flask(__name__)
 conn = MongoClient('localhost', 27017)
 db = conn['data']
 members = db['members']
-init = {"name": "init","posts": [{"title":"init","text":"init", "created":str(datetime.date.today()), "comments": [{"user":"init","comment":"init","created":str(datetime.date.today())}]}]}
+init = {"name": "init","password":"posts": [{"title":"init","text":"init", "created":str(datetime.date.today()), "comments": [{"user":"init","comment":"init","created":str(datetime.date.today())}]}]}
 
 members.insert_one(init)
 
